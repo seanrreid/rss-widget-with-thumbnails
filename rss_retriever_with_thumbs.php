@@ -1,9 +1,8 @@
 <?php
 /**
  * Plugin Name: RSS Retriever with Thumbnails
- * Plugin URI: https://github.com/torchcodelab/rss-widget-with-thumbnails
- * Description: A fork of the lightweight RSS fetch plugin RSS Retriever that adds the ability to create cached thumbnails from post images.
- * Description (cont): The shortcode [rss_retriever_with_thumbs] fetches and displays a RSS feed in an unordered list.
+ * Plugin URI: http://wordpress.org/plugins/wp-rss-retriever/
+ * Description: A lightweight RSS fetch plugin which uses the shortcode [rss_retriever_with_thumbs] to fetch and display an RSS feed in an unordered list.
  * Version: 1.0
  * Author: Torch Code Lab
  * Author URI: https://github.com/torchcodelab/WP-RSS-Retriever
@@ -174,11 +173,10 @@ function rss_retriever_with_thumbs_resize_thumbnail($image_to_be_sized) {
 
   $imagecache = new ImageCache();
   $cache_directory = $cache_dir;
-  
   $imagecache->cached_image_directory = $cache_directory;
   $cached_src = $imagecache->cache( $image_to_be_sized );
-  $url = 'http:' . $cached_src;
-  $resized_image = bfi_thumb( $url, $BFIparams );
+
+  $resized_image = bfi_thumb( $cached_src, $BFIparams );
 
   return $resized_image;
 }

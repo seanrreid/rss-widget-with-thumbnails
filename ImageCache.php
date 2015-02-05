@@ -256,7 +256,10 @@ class ImageCache
     if( is_null( $src ) ) {
       $src = $this->cached_filename;
     }
-    $url = '//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    // @TORCH - added protocol detection
+    //$url = '//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+    $url = $protocol . $_SERVER['HTTP_HOST'] . "/";
     $image_path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $src);
     $image_url = $url . substr($image_path, 1);
     if($this->link_is_broken($image_url)) {
@@ -333,7 +336,7 @@ class ImageCache
   private function set_cached_filename()
   {
     $pathinfo = pathinfo( $this->image_src );
-    $this->cached_filename = $this->cached_image_directory . '/' . md5( basename( $this->image_src ) ) . '.' . $this->file_extension;
+    $this->cached_filename = $this->cached_image_directory . md5( basename( $this->image_src ) ) . '.' . $this->file_extension;
   }
 
   /**
