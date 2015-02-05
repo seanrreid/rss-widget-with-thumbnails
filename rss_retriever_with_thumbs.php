@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: RSS Retriever with Thumbnails
- * Plugin URI: http://wordpress.org/plugins/wp-rss-retriever/
+ * Plugin URI: https://github.com/torchcodelab/rss-widget-with-thumbnails
  * Description: A lightweight RSS fetch plugin which uses the shortcode [rss_retriever_with_thumbs] to fetch and display an RSS feed in an unordered list.
  * Version: 1.0
  * Author: Torch Code Lab
